@@ -53,6 +53,7 @@ temp/
 .pytest_cache/
 .coverage
 htmlcov/
+./test_reports
 
 # Docker
 docker-compose.override.yml
