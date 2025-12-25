@@ -5,6 +5,10 @@
 <h1 align="center">DeepCareer</h1>
 
 <p align="center">
+  <a href="./README.md">简体中文</a> | <a href="./README_EN.md">English</a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Python-3.11+-blue.svg" alt="Python">
   <img src="https://img.shields.io/badge/FastAPI-0.100+-green.svg" alt="FastAPI">
   <img src="https://img.shields.io/badge/PostgreSQL-17+-blue.svg" alt="PostgreSQL">
