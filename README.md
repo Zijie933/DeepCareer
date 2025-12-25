@@ -69,7 +69,7 @@
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/yourusername/DeepCareer.git
+git clone https://github.com/Zijie933/DeepCareer.git
 cd DeepCareer
 
 # 2. 配置环境变量
