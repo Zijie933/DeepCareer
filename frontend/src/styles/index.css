@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-primary-500 to-primary-600 text-white 
+           hover:from-primary-600 hover:to-primary-700 
+           focus:ring-primary-500 shadow-lg shadow-primary-500/25;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-white text-gray-700 border border-gray-200 
+           hover:bg-gray-50 hover:border-gray-300 
+           focus:ring-gray-500;
+  }
+  
+  .btn-ghost {
+    @apply btn text-gray-600 hover:bg-gray-100 hover:text-gray-900;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 
+           hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           placeholder-gray-400 transition-all duration-200;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1.5;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
+  }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+/* 动态渐变背景 */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-bg {
+  background: linear-gradient(
+    -45deg,
+    #f0f9ff,
+    #e0f2fe,
+    #fdf4ff,
+    #fce7f3,
+    #f0fdf4,
+    #ecfeff
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}

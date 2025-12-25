@@ -1,0 +1,60 @@
+# ============================================
+# DeepCareer Python 依赖
+# Python 3.11+ 必需
+# ============================================
+
+# ---------- Web 框架 ----------
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# ---------- 数据库 ----------
+sqlalchemy==2.0.25
+asyncpg==0.29.0          # PostgreSQL 异步驱动
+psycopg2-binary==2.9.9   # PostgreSQL 同步驱动
+pgvector==0.2.4          # 向量扩展支持
+
+# ---------- Redis ----------
+redis==5.0.1
+hiredis==2.3.2
+
+# ---------- OpenAI ----------
+openai==1.10.0
+
+# ---------- 文件处理 ----------
+python-multipart==0.0.6  # 文件上传
+PyPDF2==3.0.1            # PDF 解析
+python-docx==1.1.0       # Word 文档解析
+Pillow==10.2.0           # 图片处理
+pytesseract==0.3.10      # OCR（需要系统安装 tesseract）
+
+# ---------- 工具库 ----------
+python-dotenv==1.0.0
+httpx==0.26.0
+tenacity==8.2.3          # 重试机制
+loguru==0.7.2            # 日志
+
+# ---------- 数据处理 ----------
+pandas==2.2.0
+numpy==1.26.3
+scikit-learn==1.4.0
+
+# ---------- 中文处理 ----------
+jieba==0.42.1
+
+# ---------- Embedding（本地向量模型）----------
+sentence-transformers==2.2.2
+torch==2.0.1
+
+# ---------- 爬虫工具 ----------
+playwright==1.40.0       # 浏览器自动化
+beautifulsoup4==4.12.3   # HTML 解析
+lxml==5.1.0              # XML/HTML 解析
+fake-useragent==1.4.0    # 随机 UA
+
+# ---------- 开发工具（可选）----------
+pytest==7.4.4
+pytest-asyncio==0.23.3
+black==24.1.1
+flake8==7.0.0

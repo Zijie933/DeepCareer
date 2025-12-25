@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepcareer"
+version = "1.0.0"
+description = "DeepCareer - 智能职位匹配系统"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "DeepCareer Team"}
+]
+
+[project.scripts]
+deepcareer = "backend.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["backend*"]

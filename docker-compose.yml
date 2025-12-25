@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 数据库（含 pgvector 扩展）
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: deepcareer_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-deepcareer}
+      POSTGRES_USER: ${POSTGRES_USER:-deepcareer_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-deepcareer_password}
+      POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init_db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-deepcareer_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - deepcareer_network
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    container_name: deepcareer_redis
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - deepcareer_network
+
+  # FastAPI 应用
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: deepcareer_app
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-deepcareer}
+      - POSTGRES_USER=${POSTGRES_USER:-deepcareer_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-deepcareer_password}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - DEBUG=${DEBUG:-false}
+    ports:
+      - "${APP_PORT:-8001}:8001"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - deepcareer_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  deepcareer_network:
+    driver: bridge

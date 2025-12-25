@@ -1,0 +1,72 @@
+export default function Logo({ size = 40, className = "" }) {
+  return (
+    <svg 
+      width={size} 
+      height={size} 
+      viewBox="0 0 200 200" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor:'#4f46e5'}}/>
+          <stop offset="50%" style={{stopColor:'#7c3aed'}}/>
+          <stop offset="100%" style={{stopColor:'#a855f7'}}/>
+        </linearGradient>
+        <linearGradient id="rocketGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" style={{stopColor:'#e0e7ff'}}/>
+          <stop offset="100%" style={{stopColor:'#ffffff'}}/>
+        </linearGradient>
+        <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style={{stopColor:'#fbbf24'}}/>
+          <stop offset="50%" style={{stopColor:'#f97316'}}/>
+          <stop offset="100%" style={{stopColor:'#ef4444'}}/>
+        </linearGradient>
+        <radialGradient id="glowGradient" cx="50%" cy="30%" r="60%">
+          <stop offset="0%" style={{stopColor:'#ffffff', stopOpacity:0.3}}/>
+          <stop offset="100%" style={{stopColor:'#ffffff', stopOpacity:0}}/>
+        </radialGradient>
+        <linearGradient id="dcGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor:'#3730a3'}}/>
+          <stop offset="100%" style={{stopColor:'#4c1d95'}}/>
+        </linearGradient>
+      </defs>
+      
+      {/* 圆角矩形背景 */}
+      <rect x="0" y="0" width="200" height="200" rx="40" ry="40" fill="url(#bgGradient)"/>
+      <rect x="0" y="0" width="200" height="200" rx="40" ry="40" fill="url(#glowGradient)"/>
+      
+      {/* DC 艺术字背景 */}
+      <text x="100" y="150" fontFamily="'Trebuchet MS', 'Gill Sans', sans-serif" fontSize="110" fontWeight="900" fontStyle="italic" fill="url(#dcGradient)" fillOpacity="0.5" textAnchor="middle" letterSpacing="-8">DC</text>
+      
+      {/* 轨道圆环 */}
+      <ellipse cx="100" cy="105" rx="70" ry="25" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.3" transform="rotate(-15 100 105)"/>
+      <ellipse cx="100" cy="105" rx="55" ry="20" fill="none" stroke="#ffffff" strokeWidth="2" opacity="0.2" transform="rotate(20 100 105)"/>
+      
+      {/* 火箭主体 */}
+      <g transform="translate(100, 95)">
+        <path d="M0 -55 C-15 -40 -18 -10 -18 20 L-12 20 L-12 35 L12 35 L12 20 L18 20 C18 -10 15 -40 0 -55 Z" fill="url(#rocketGradient)"/>
+        <circle cx="0" cy="-15" r="10" fill="#6366f1"/>
+        <circle cx="0" cy="-15" r="7" fill="#818cf8"/>
+        <ellipse cx="-2" cy="-17" rx="3" ry="2" fill="#ffffff" opacity="0.6"/>
+        <path d="M-18 10 L-30 35 L-18 30 Z" fill="#c7d2fe"/>
+        <path d="M18 10 L30 35 L18 30 Z" fill="#c7d2fe"/>
+        <path d="M-8 35 Q-12 55 0 70 Q12 55 8 35 Z" fill="url(#flameGradient)"/>
+        <path d="M-4 35 Q-6 50 0 60 Q6 50 4 35 Z" fill="#fef3c7"/>
+      </g>
+      
+      {/* 星星装饰 */}
+      <circle cx="35" cy="45" r="3" fill="#ffffff"/>
+      <circle cx="165" cy="55" r="2" fill="#ffffff" opacity="0.8"/>
+      <circle cx="45" cy="160" r="2.5" fill="#ffffff" opacity="0.7"/>
+      <circle cx="155" cy="150" r="2" fill="#ffffff" opacity="0.6"/>
+      <circle cx="30" cy="100" r="1.5" fill="#ffffff" opacity="0.5"/>
+      <circle cx="170" cy="110" r="2" fill="#ffffff" opacity="0.7"/>
+      
+      {/* 闪烁星星 */}
+      <path d="M55 75 L57 80 L62 80 L58 83 L60 88 L55 85 L50 88 L52 83 L48 80 L53 80 Z" fill="#fbbf24" opacity="0.9"/>
+      <path d="M150 85 L151.5 89 L156 89 L152.5 91.5 L154 96 L150 93 L146 96 L147.5 91.5 L144 89 L148.5 89 Z" fill="#fbbf24" opacity="0.8"/>
+    </svg>
+  );
+}
